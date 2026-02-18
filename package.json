@@ -1,0 +1,82 @@
+{
+  "name": "next-geo",
+  "version": "0.1.0",
+  "description": "Serve markdown to LLMs instead of HTML in Next.js App Router apps",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./middleware": {
+      "import": "./dist/middleware.js",
+      "types": "./dist/middleware.d.ts"
+    },
+    "./handler": {
+      "import": "./dist/handler.js",
+      "types": "./dist/handler.d.ts"
+    },
+    "./config": {
+      "import": "./dist/config.js",
+      "require": "./config.cjs",
+      "types": "./dist/config.d.ts"
+    },
+    "./detect": {
+      "import": "./dist/detect.js",
+      "types": "./dist/detect.d.ts"
+    },
+    "./llms-txt": {
+      "import": "./dist/llms-txt.js",
+      "types": "./dist/llms-txt.d.ts"
+    },
+    "./discovery": {
+      "import": "./dist/discovery.js",
+      "types": "./dist/discovery.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "config.cjs",
+    "skill",
+    "check",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "prepublishOnly": "npm run build",
+    "tsc:check": "tsc --noEmit",
+    "test": "node --experimental-vm-modules node_modules/.bin/jest"
+  },
+  "keywords": [
+    "next.js",
+    "markdown",
+    "llm",
+    "content-negotiation",
+    "geo",
+    "generative-engine-optimization",
+    "llms-txt"
+  ],
+  "author": "Continue Dev, Inc.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/continuedev/next-geo.git"
+  },
+  "homepage": "https://github.com/continuedev/next-geo#readme",
+  "peerDependencies": {
+    "next": ">=14"
+  },
+  "dependencies": {
+    "turndown": "^7.2.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.0.0",
+    "@types/turndown": "^5.0.5",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.4.5"
+  }
+}
