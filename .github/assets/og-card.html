@@ -14,25 +14,30 @@
     height: 640px;
     overflow: hidden;
     font-family: 'IBM Plex Sans', -apple-system, sans-serif;
-    background: hsl(0 0% 95.3%);
-    color: hsl(0 0% 0%);
+    background: #1a1a2e;
     position: relative;
   }
 
-  /* Hero background — subtle ambient glow in top-right */
-  .ambient {
+  /* Watercolor background */
+  .bg-image {
     position: absolute;
-    top: -120px;
-    right: -200px;
-    width: 900px;
-    height: 700px;
-    background: url('./hero-bg.jpg') center/cover no-repeat;
-    opacity: 0.12;
-    filter: blur(20px);
-    pointer-events: none;
+    inset: 0;
+    background: url('./og-bg.png') center/cover no-repeat;
   }
 
-  /* Content */
+  /* Gradient overlay — darker on left for text, transparent on right for icon */
+  .bg-wash {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(10, 10, 30, 0.7) 0%,
+      rgba(10, 10, 30, 0.45) 50%,
+      rgba(10, 10, 30, 0.15) 100%
+    );
+  }
+
+  /* Content — left side */
   .content {
     position: relative;
     z-index: 1;
@@ -50,7 +55,7 @@
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.2em;
-    color: rgba(0, 0, 0, 0.3);
+    color: rgba(255, 255, 255, 0.5);
     margin-bottom: 24px;
   }
 
@@ -59,14 +64,14 @@
     font-weight: 300;
     letter-spacing: -2px;
     line-height: 1.05;
-    color: rgba(0, 0, 0, 0.88);
+    color: rgba(255, 255, 255, 0.95);
     margin-bottom: 20px;
   }
 
   .tagline {
     font-size: 24px;
     font-weight: 400;
-    color: rgba(0, 0, 0, 0.4);
+    color: rgba(255, 255, 255, 0.6);
     line-height: 1.5;
     margin-bottom: 40px;
   }
@@ -74,53 +79,31 @@
   .pill {
     display: inline-block;
     padding: 12px 28px;
-    background: rgba(0, 0, 0, 0.04);
-    border: 1px solid rgba(0, 0, 0, 0.06);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     font-family: 'IBM Plex Mono', monospace;
     font-size: 17px;
     font-weight: 400;
-    color: rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 0.7);
     letter-spacing: 0.02em;
   }
 
-  /* Thin rule */
-  .rule {
+  /* Continue icon — right side */
+  .logo-icon {
     position: absolute;
-    bottom: 80px;
-    left: 100px;
-    right: 100px;
-    height: 1px;
-    background: rgba(0, 0, 0, 0.06);
-  }
-
-  /* Footer */
-  .footer {
-    position: absolute;
-    bottom: 36px;
-    left: 100px;
-    right: 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .footer-logo {
-    height: 26px;
-    opacity: 0.4;
-  }
-
-  .footer-text {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 520px;
+    height: 520px;
+    opacity: 1;
   }
 </style>
 </head>
 <body>
-  <div class="ambient"></div>
+  <div class="bg-image"></div>
+  <div class="bg-wash"></div>
   <div class="content">
     <p class="label">Continue</p>
     <h1>next-geo</h1>
@@ -129,10 +112,15 @@
       <code class="pill">npm install next-geo</code>
     </div>
   </div>
-  <div class="rule"></div>
-  <div class="footer">
-    <img src="./logo-black-text.png" class="footer-logo" alt="Continue" />
-    <span class="footer-text">continue.dev</span>
-  </div>
+  <svg class="logo-icon" viewBox="27.2 27.2 52.4 48.7" xmlns="http://www.w3.org/2000/svg">
+    <path fill="white" d="M68.6,34.7l-2.7,4.7l6.8,11.9c0.1,0.1,0.1,0.2,0.1,0.3s0,0.2-0.1,0.3l-6.8,11.9l2.7,4.7l9.7-16.9L68.6,34.7
+	L68.6,34.7z M64.9,38.8l2.7-4.7h-5.4l-2.7,4.7H64.9L64.9,38.8z M59.4,40l6.3,11h5.4l-6.3-11H59.4z M64.9,63.1l6.3-11h-5.4l-6.3,11
+	H64.9z M59.4,64.4l2.7,4.7h5.4l-2.7-4.7H59.4L59.4,64.4z M41.1,70.2c-0.1,0-0.2,0-0.3-0.1s-0.2-0.1-0.2-0.2L33.7,58h-5.4L38,74.9
+	h19.5l-2.7-4.7H41.1L41.1,70.2z M55.8,69.6l2.7,4.7l2.7-4.7l-2.7-4.7L55.8,69.6L55.8,69.6z M57.5,64.3H44.8L42.1,69h12.6L57.5,64.3z
+	 M43.8,63.7l-6.3-11l-2.7,4.7l6.3,11C41.1,68.4,43.8,63.7,43.8,63.7z M28.3,56.8h5.4l2.7-4.7H31C31,52.1,28.3,56.8,28.3,56.8z
+	 M40.5,33.3c0-0.1,0.1-0.2,0.2-0.2c0.1,0,0.2-0.1,0.3-0.1h13.7l2.7-4.7H38l-9.7,16.9h5.4L40.5,33.3L40.5,33.3z M36.4,51.1l-2.7-4.7
+	h-5.4l2.7,4.7C31,51.1,36.4,51.1,36.4,51.1z M41,34.8l-6.3,11l2.7,4.7l6.3-11L41,34.8z M54.8,34.2H42.1l2.7,4.7h12.7L54.8,34.2z
+	 M58.5,38.3l2.7-4.7l-2.7-4.7l-2.7,4.7L58.5,38.3z"/>
+  </svg>
 </body>
 </html>
