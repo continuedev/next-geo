@@ -39,12 +39,14 @@
   "files": [
     "dist",
     "config.cjs",
+    "scripts",
     "skill",
     "check",
     "README.md"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
+    "postinstall": "node scripts/postinstall.js || true",
     "prepublishOnly": "npm run build",
     "tsc:check": "tsc --noEmit",
     "test": "node --experimental-vm-modules node_modules/.bin/jest"
