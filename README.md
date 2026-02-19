@@ -1,18 +1,66 @@
-# next-geo
+<p align="center">
+  <a href="https://continue.dev">
+    <img src=".github/assets/continue-banner.png" width="800" alt="Continue" />
+  </a>
+</p>
 
-Serve markdown to LLMs instead of HTML. Drop `page.md` files next to your `page.tsx` files and they'll be served automatically when an LLM requests your pages.
+<h1 align="center">next-geo</h1>
 
-When no `page.md` exists, pages are auto-converted from HTML to markdown on the fly.
+<p align="center">Serve markdown to LLMs instead of HTML</p>
 
-## How it works
+---
 
-LLMs and AI agents signal they want markdown in three ways:
+## Why?
 
-1. **Accept header** — `Accept: text/markdown` (used by Claude Code, Cloudflare Markdown for Agents, etc.)
-2. **URL suffix** — Append `.md` to any page URL (e.g., `example.com/pricing.md`)
-3. **User-Agent** — Known bot identifiers (ChatGPT-User, ClaudeBot, GPTBot, PerplexityBot, etc.)
+When an LLM visits your site, it gets this:
 
-When detected, requests are rewritten to an internal handler that serves your `page.md` or auto-converts the HTML.
+```html
+<div class="pricing-hero_container__x7z2k">
+  <div class="pricing-hero_gradient__m4k9p">
+    <h1 class="pricing-hero_title__j2x8n">
+      <span class="text-highlight_wrapper__k9m2x">Pricing</span>
+    </h1>
+    <div class="pricing-card_grid__p3k7m">
+      <div class="pricing-card_card__n8x2k" data-tier="free">
+        <!-- 200 more lines of div soup -->
+```
+
+With next-geo, it gets this:
+
+```markdown
+# Pricing
+
+## Free
+Get started at no cost.
+- Up to 1,000 requests/month
+- Community support
+
+## Pro — $20/month
+For growing teams.
+- Unlimited requests
+- Priority support
+- Custom domains
+```
+
+Drop `page.md` files next to your `page.tsx` files and they're served automatically when an LLM requests your pages. When no `page.md` exists, pages are auto-converted from HTML to markdown on the fly.
+
+This is **Generative Engine Optimization** — making your site readable by the AI agents and LLMs that increasingly drive traffic and surface your content.
+
+## Table of Contents
+
+- [Quick start](#quick-start)
+- [How it works](#how-it-works)
+- [Auto-conversion](#auto-conversion)
+- [Configuration](#configuration)
+- [How detection works](#how-detection-works)
+- [llms.txt](#llmstxt)
+- [Discovery Headers](#discovery-headers)
+- [Caching & Security](#caching--security)
+- [Utilities](#utilities)
+- [Redirects](#redirects)
+- [Route groups](#route-groups)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Quick start
 
@@ -52,6 +100,16 @@ curl -H "Accept: text/markdown" http://localhost:3000/pricing
 # or
 curl http://localhost:3000/pricing.md
 ```
+
+## How it works
+
+LLMs and AI agents signal they want markdown in three ways:
+
+1. **Accept header** — `Accept: text/markdown` (used by Claude Code, Cloudflare Markdown for Agents, etc.)
+2. **URL suffix** — Append `.md` to any page URL (e.g., `example.com/pricing.md`)
+3. **User-Agent** — Known bot identifiers (ChatGPT-User, ClaudeBot, GPTBot, PerplexityBot, etc.)
+
+When detected, requests are rewritten to an internal handler that serves your `page.md` or auto-converts the HTML.
 
 ## Auto-conversion
 
@@ -199,6 +257,14 @@ This is useful for aliased routes, vanity URLs, or any case where two paths shou
 
 Next.js route groups (e.g., `(main-layout)`, `(marketing)`) are handled automatically. The handler scans all `(...)` directories at the app root to find `page.md` files regardless of which route group they belong to.
 
+## Contributing
+
+We welcome contributions! See [CONTRIBUTING.md](.github/CONTRIBUTING.md) for development setup, project structure, and the PR process.
+
 ## License
 
-MIT
+[MIT](LICENSE) — Copyright (c) 2025 Continue Dev, Inc.
+
+---
+
+<p align="center">Built by <a href="https://continue.dev">Continue</a></p>
