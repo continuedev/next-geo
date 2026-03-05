@@ -61,7 +61,7 @@
     "llms-txt"
   ],
   "author": "Continue Dev, Inc.",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/continuedev/next-geo.git"

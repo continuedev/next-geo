@@ -8,6 +8,8 @@
 
 <p align="center">Serve markdown to LLMs instead of HTML</p>
 
+<p align="center"><em>An autonomous codebase built by the <a href="https://continue.dev/blueprint">Continue Software Factory</a></em></p>
+
 ---
 
 ## Why?
@@ -263,7 +265,8 @@ We welcome contributions! See [CONTRIBUTING.md](.github/CONTRIBUTING.md) for dev
 
 ## License
 
-[MIT](LICENSE) — Copyright (c) 2025 Continue Dev, Inc.
+Apache-2.0 — see [LICENSE](LICENSE) for details.
+Copyright (c) 2025 Continue Dev, Inc.
 
 ---
 
